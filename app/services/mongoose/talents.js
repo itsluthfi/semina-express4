@@ -101,10 +101,21 @@ const deleteTalents = async (req) => {
   return result;
 };
 
+const checkingTalents = async (id) => {
+  console.log(id);
+  const result = await Talents.findOne({ _id: id });
+
+  if (!result)
+    throw new NotFoundError(`Tidak ada pembicara dengan id :  ${id}`);
+
+  return result;
+};
+
 module.exports = {
   getAllTalents,
   createTalents,
   getOneTalents,
   updateTalents,
   deleteTalents,
+  checkingTalents,
 };
