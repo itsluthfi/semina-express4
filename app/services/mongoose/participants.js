@@ -91,7 +91,7 @@ const signinParticipant = async (req) => {
     throw new UnauthorizedError('Invalid Credentials');
   }
 
-  const token = createJWT({ payload: createTokenParticipant() });
+  const token = createJWT({ payload: createTokenParticipant(result) });
 
   return token;
 };
