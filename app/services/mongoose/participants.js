@@ -106,16 +106,19 @@ const getAllEvents = async (req) => {
 };
 
 const getOneEvent = async (req) => {
-  const result = await Events.findOne({ _id: req.params.id })
+  const { id } = req.params;
+  const result = await Events.findOne({ _id: id })
     .populate('category')
     .populate('talent')
     .populate('image');
+
+  if (!result) throw new NotFoundError(`Tidak ada acara dengan id :  ${id}`);
 
   return result;
 };
 
 const getAllOrders = async (req) => {
-  const result = await Orders.find({ participant: req.user.id });
+  const result = await Orders.find({ participant: req.participant.id });
   return result;
 };
 
