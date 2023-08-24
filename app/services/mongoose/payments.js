@@ -1,5 +1,5 @@
 const Payments = require('../../api/v1/payments/model');
-const { checkingImage } = require('./images');
+const { checkingImages } = require('./images');
 
 const { NotFoundError, BadRequestError } = require('../../errors');
 
@@ -19,7 +19,7 @@ const getAllPayments = async (req) => {
 const createPayments = async (req) => {
   const { type, image } = req.body;
 
-  await checkingImage(image);
+  await checkingImages(image);
 
   const check = await Payments.findOne({ type, organizer: req.user.organizer });
 
@@ -57,7 +57,7 @@ const updatePayments = async (req) => {
   const { id } = req.params;
   const { type, image } = req.body;
 
-  await checkingImage(image);
+  await checkingImages(image);
 
   const check = await Payments.findOne({
     type,

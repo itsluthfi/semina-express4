@@ -1,6 +1,6 @@
 // import model Events
 const Events = require('../../api/v1/events/model');
-const { checkingImage } = require('./images');
+const { checkingImages } = require('./images');
 const { checkingCategories } = require('./categories');
 const { checkingTalents } = require('./talents');
 
@@ -125,7 +125,7 @@ const updateEvents = async (req) => {
   } = req.body;
 
   // cari image, category dan talent dengan field id
-  await checkingImage(image);
+  await checkingImages(image);
   await checkingCategories(category);
   await checkingTalents(talent);
 
