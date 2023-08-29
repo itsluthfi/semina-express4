@@ -87,7 +87,6 @@ const deleteCategories = async (req) => {
 const checkingCategories = async (id) => {
   const result = await Categories.findOne({
     _id: id,
-    organizer: req.user.organizer,
   });
 
   if (!result) throw new NotFoundError(`Tidak ada Kategori dengan id :  ${id}`);
