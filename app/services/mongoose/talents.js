@@ -112,7 +112,6 @@ const deleteTalents = async (req) => {
 };
 
 const checkingTalents = async (id) => {
-  console.log(id);
   const result = await Talents.findOne({ _id: id });
 
   if (!result)
