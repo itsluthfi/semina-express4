@@ -188,6 +188,14 @@ const checkoutOrder = async (req) => {
   return result;
 };
 
+const getAllPaymentsByOrganizer = async (req) => {
+  const { id } = req.params;
+
+  const result = await Payments.find({ organizer: id });
+
+  return result;
+};
+
 module.exports = {
   signupParticipant,
   activateParticipant,
@@ -195,5 +203,6 @@ module.exports = {
   getAllEvents,
   getOneEvent,
   getAllOrders,
+  getAllPaymentsByOrganizer,
   checkoutOrder,
 };

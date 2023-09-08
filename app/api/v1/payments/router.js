@@ -7,12 +7,7 @@ const {
 } = require('../../../middlewares/auth');
 
 router.get('/payments', authenticateUser, authorizeRoles('organizer'), index);
-router.get(
-  '/payments/:id',
-  authenticateUser,
-  authorizeRoles('organizer'),
-  find
-);
+router.get('/payments/:id', find);
 router.put(
   '/payments/:id',
   authenticateUser,
